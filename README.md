@@ -75,16 +75,17 @@ void setup() {
     };
     lotenInit(destMacList);
 
-    // Example data sending
+ 
+}
+
+void loop() {
+    // Your loop code here
+   // Example data sending
     hi data;
     for (int i = 0; i < 100; i++) {
         data.temp[i] = i + 1;
     }
     lotenSend(&data, sizeof(data), destMacList[0], true);
-}
-
-void loop() {
-    // Your loop code here
 }
 ##Contribution
 
