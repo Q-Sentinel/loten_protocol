@@ -33,6 +33,10 @@ This is the beta release of the QSentinel Loten Protocol. In this version, we ha
 
 In the upcoming version, we plan to introduce a master-slave communication API, providing more flexibility and functionality to the protocol.
 
+##Contribution
+
+We welcome contributions from the community! If you have any suggestions, bug fixes, or feature requests, please open an issue or submit a pull request.
+
 ## Getting Started
 
 To use the Loten Protocol in your project, follow these steps:
@@ -44,6 +48,8 @@ To use the Loten Protocol in your project, follow these steps:
 ```cpp
 // Example Usage
 #include "loten.h"
+
+
 
 // Define the data receiving callback function
 void userProcessReceivedData(const uint8_t* data, uint16_t length) {
@@ -87,6 +93,5 @@ void loop() {
     }
     lotenSend(&data, sizeof(data), destMacList[0], true);
 }
-##Contribution
 
-We welcome contributions from the community! If you have any suggestions, bug fixes, or feature requests, please open an issue or submit a pull request.
+
