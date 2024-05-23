@@ -73,7 +73,8 @@ void userProcessReceivedData(const uint8_t* data, uint16_t length) {
 void setup() {
     // Initialize serial communication
     Serial.begin(115200);
-
+    // call back function prototype
+    // void (*ProcessReceivedDataFunc)(const uint8_t* data, uint16_t length);
     // Install ESP-NOW libraries and set up callback function
     setProcessReceivedDataCallback(userProcessReceivedData);
 
@@ -82,6 +83,8 @@ void setup() {
         {0xB0, 0xB2, 0x1C, 0xB1, 0xD1, 0xA8},
         {0xB0, 0xB2, 0x1C, 0xB1, 0xD2, 0xA4}
     };
+    //prototype -> void lotenInit(uint8_t macList[][6],  uint16_t prime_modulusc = DEFAULT_PRIME_MODULUS);
+    //it is recommend to use a large prime number as the prime modulus
     lotenInit(destMacList);
 
  
@@ -94,6 +97,8 @@ void loop() {
     for (int i = 0; i < 100; i++) {
         data.temp[i] = i + 1;
     }
+    //prototype -> void lotenSend(const void *data, size_t dataSize, const uint8_t *destMac, bool encrypted);
+    //encryption is optional
     lotenSend(&data, sizeof(data), destMacList[0], true);
 }
 
