@@ -23,7 +23,7 @@ This is the beta release of the QSentinel Loten Protocol. In this version, we ha
 
 3. Low-Latency Data Transmission: By sidestepping routing delays, ESP-NOW facilitates rapid data exchange between connected devices, ideal for real-time applications requiring swift responsiveness.
 
-## Applications:
+## Applications
 
 1. Sensor Networks: Efficiently collect data from multiple sensors to a central ESP32 device.
 2. Industrial Automation: Enable real-time control and communication between devices in industrial environments.
@@ -32,6 +32,10 @@ This is the beta release of the QSentinel Loten Protocol. In this version, we ha
 ### Planned Features for Next Version
 
 In the upcoming version, we plan to introduce a master-slave communication API, providing more flexibility and functionality to the protocol.
+
+## Contribution
+
+We welcome contributions from the community! If you have any suggestions, bug fixes, or feature requests, please open an issue or submit a pull request.
 
 ## Getting Started
 
@@ -44,6 +48,11 @@ To use the Loten Protocol in your project, follow these steps:
 ```cpp
 // Example Usage
 #include "loten.h"
+
+typedef struct hi {
+    int temp[100];
+} hi;
+
 
 // Define the data receiving callback function
 void userProcessReceivedData(const uint8_t* data, uint16_t length) {
@@ -87,6 +96,4 @@ void loop() {
     }
     lotenSend(&data, sizeof(data), destMacList[0], true);
 }
-##Contribution
 
-We welcome contributions from the community! If you have any suggestions, bug fixes, or feature requests, please open an issue or submit a pull request.
