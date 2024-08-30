@@ -12,6 +12,7 @@
 #define MOTOR1_N 17
 #define MOTOR2_P 27
 #define MOTOR2_N 18
+#define LED  33
 
 Adafruit_SSD1306 display(128, 64);
 
@@ -116,6 +117,7 @@ void turnAround(){
   digitalWrite(MOTOR2_P, 0);
 
   delay(2000);
+  digitalWrite(LED, HIGH);
   analogWrite(MOTOR1_N, 255);
   digitalWrite(MOTOR1_P, 255);
   analogWrite(MOTOR2_N, 255);
@@ -148,6 +150,10 @@ void userProcessReceivedData(const uint8_t* data, uint16_t length) {
 
     if (receivedData.temp[1]>1500){
       turnAround();
+      digitalWrite(LED, HIGH);
+    }
+    else{
+      digitalWrite(LED, LOW);
     }
 }
 
@@ -169,7 +175,9 @@ void setup() {
     pinMode(MOTOR1_N, OUTPUT);
     pinMode(MOTOR2_P, OUTPUT);
     pinMode(MOTOR2_N, OUTPUT);
-
+    
+    pinMode(LED,OUTPUT);
+    digitalWrite(LED, LOW);
 
 
 
@@ -212,6 +220,10 @@ void loop() {
       lotenSend(&data, sizeof(data), broadcastAddress , false);
       turnAround();
       
+    }
+    else{
+      digitalWrite(LED, LOW);
+
     }
 
     delay(100);
